@@ -1,0 +1,12 @@
+{
+    "target_url": "test-samples/hacked-page.html",
+    "check_interval_seconds": 10,
+    "is_local_file": true,
+    "alert_keywords": [
+        "hacked",
+        "defaced",
+        "security has failed",
+        "jingo bhai",
+        "compromised"
+    ]
+}
