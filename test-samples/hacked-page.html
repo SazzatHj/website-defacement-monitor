@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Security Compromised</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; padding: 0; background-color: #050505; color: #00FF00; font-family: 'Share Tech Mono', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; text-align: center; }
+        .container { max-width: 800px; padding: 20px; }
+        h1 { font-family: 'Orbitron', sans-serif; font-size: 3.5rem; color: #FF0000; text-shadow: 0px 0px 15px #FF0000; margin-bottom: 20px; animation: flicker 2s infinite alternate; }
+        .terminal-text { font-size: 1.5rem; line-height: 1.6; min-height: 150px; display: inline-block; text-align: center; max-width: 100%; }
+        .cursor { display: inline-block; width: 12px; height: 1.6rem; background-color: #00FF00; margin-left: 5px; animation: blink 0.75s step-end infinite; vertical-align: middle; }
+        .hacker-signature { color: #00AAFF; font-size: 2rem; margin-top: 40px; text-shadow: 0px 0px 10px #00AAFF; opacity: 0; transition: opacity 1s ease-in-out; }
+        .hacker-signature.show { opacity: 1; animation: pulseGlow 2s infinite ease-in-out; }
+        .scanlines { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); background-size: 100% 4px, 6px 100%; z-index: 999; pointer-events: none; }
+        @keyframes flicker { 0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0px 0px 15px #FF0000, 0px 0px 30px #FF0000; opacity: 1; } 20%, 24%, 55% { text-shadow: none; opacity: 0.4; } }
+        @keyframes blink { from, to { background-color: transparent } 50% { background-color: #00FF00 } }
+        @keyframes pulseGlow { 0%, 100% { text-shadow: 0px 0px 10px #00AAFF, 0px 0px 20px #00AAFF; } 50% { text-shadow: 0px 0px 5px #00AAFF, 0px 0px 10px #00AAFF; } }
+    </style>
+</head>
+<body class="csshake-slow">
+    <div class="scanlines"></div>
+    <div class="container">
+        <h1>YOUR SECURITY HAS FAILED</h1>
+        <div class="terminal-text"><span id="typed-content"></span><span class="cursor"></span></div>
+        <div class="hacker-signature" id="signature">// HACKED BY THE JINGO BHAI //</div>
+    </div>
+    <script>
+        const fullText = "Your systems were found to be highly vulnerable. We gained access to test and expose these critical flaws before someone with malicious intent does.<br><br>This is not a crime—this is an audit. Secure your infrastructure immediately.";
+        const textContainer = document.getElementById("typed-content");
+        const signature = document.getElementById("signature");
+        let index = 0;
+        function typeEffect() {
+            if (index < fullText.length) {
+                if (fullText.substr(index, 4) === "<br>") { textContainer.innerHTML += "<br>"; index += 4; } 
+                else { textContainer.innerHTML += fullText.charAt(index); index++; }
+                setTimeout(typeEffect, 40);
+            } else { signature.classList.add("show"); }
+        }
+        document.addEventListener("DOMContentLoaded", () => { setTimeout(typeEffect, 500); });
+    </script>
+</body>
+</html>
