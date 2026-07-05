@@ -17,3 +17,15 @@ A defensive security tool written in Python designed to track web page integrity
     "is_local_file": true,
     "alert_keywords": ["hacked", "defaced", "security has failed"]
 }
+
+
+```
+- target_url: The link or local path to watch.
+- is_local_file: Toggle true for file system templates, false for active live URLs (http://...).
+
+## 💻 Usage
+Run the tracking loop straight from your terminal:
+
+Bash
+
+python monitor.py
